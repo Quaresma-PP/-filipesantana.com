@@ -1,0 +1,178 @@
+/* ═══════════════════════════════════════
+   RESET & VARIÁVEIS
+═══════════════════════════════════════ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --gold:       #d4af37;
+  --gold-light: #f0d068;
+  --black:      #000000;
+  --white:      #ffffff;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: 'Georgia', serif;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+}
+
+/* ═══════════════════════════════════════
+   PAGE WRAPPER
+═══════════════════════════════════════ */
+.page {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+.hero {
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+/* Imagem ocupa largura toda, altura natural */
+.hero__img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Gradiente na base: funde a imagem com o preto dos botões */
+.hero__fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(
+    to bottom,
+    transparent       0%,
+    rgba(0,0,0,0.55) 40%,
+    rgba(0,0,0,0.88) 70%,
+    #000000          100%
+  );
+  pointer-events: none;
+}
+
+/* Texto sobre o gradiente */
+.hero__text {
+  position: absolute;
+  bottom: 28px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  padding: 0 24px;
+  z-index: 2;
+}
+
+.hero__name {
+  font-family: 'Georgia', serif;
+  font-size: clamp(20px, 6vw, 32px);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: clamp(1px, 1.5vw, 4px);
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0,0,0,.9);
+  white-space: nowrap;
+}
+
+/* Nome + Instagram lado a lado */
+.hero__name-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ícone Instagram */
+.hero__ig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 107%,
+    #fdf497 0%, #fdf497 5%,
+    #fd5949 45%, #d6249f 60%,
+    #285AEB 90%
+  );
+  color: #fff;
+  font-size: 17px;
+  text-decoration: none;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.hero__ig:hover {
+  transform: scale(1.12);
+  box-shadow: 0 0 18px rgba(214, 36, 159, .5);
+}
+
+/* ═══════════════════════════════════════
+   BOTÕES
+═══════════════════════════════════════ */
+.links {
+  background: var(--black);
+  padding: 24px 20px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--white);
+  color: var(--black);
+  text-decoration: none;
+  border-radius: 14px;
+  padding: 15px 18px;
+  border: 2px solid transparent;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(255,255,255,.1);
+  border-color: rgba(212,175,55,.5);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+}
+
+.btn__label {
+  flex: 1;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.btn__arrow {
+  font-size: 15px;
+  opacity: .35;
+  flex-shrink: 0;
+  color: var(--black);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVO
+═══════════════════════════════════════ */
+@media (max-width: 380px) {
+  .hero__name { letter-spacing: 3px; }
+}
